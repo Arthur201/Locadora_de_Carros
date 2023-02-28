@@ -61,7 +61,7 @@ public class Locadora {
     }
 
     public Carro readCarroSelecionado(Session session, Integer carroSelecionado){
-        Carro carro = (Carro) session.createQuery("from Carro where codigo_carro = :codigo_carro").setParameter(carroSelecionado, "codigo_carro").getSingleResult();
+        Carro carro = (Carro) session.createQuery("from Carro where codigo_carro = :codigo_carro").setParameter("codigo_carro", carroSelecionado).getSingleResult();
         return carro;
 
     }
