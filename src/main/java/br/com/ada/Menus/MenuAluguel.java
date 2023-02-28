@@ -2,7 +2,6 @@ package br.com.ada.Menus;
 
 import br.com.ada.Entities.*;
 import br.com.ada.Interfaces.IMenuParametrizado;
-import br.com.ada.Interfaces.IMenuProcessamento;
 import org.hibernate.Session;
 
 import java.time.LocalDate;
@@ -27,11 +26,11 @@ public class MenuAluguel implements IMenuParametrizado<Session, Cliente, List> {
         System.out.println("Quantas diárias você deseja? ");
         int diarias = sc.nextInt();
 
-        System.out.println("Selecione a unidade a qual deseja fazer a retirada do carro. Digite seu respectivo ID:  ");
-        Locadora.getInstance().getEnderecoUnidades(session).forEach(endereco_unidades -> {
-            System.out.println(endereco_unidades);
+        Locadora.getInstance().readEnderecoUnidades(session).forEach(endereco_unidades -> {
+            System.out.println(endereco_unidades.toString());
             System.out.println();
         });
+        System.out.println("Selecione a unidade a qual deseja fazer a retirada do carro. Digite seu respectivo ID:  ");
         int IdUnidadeDesejada = sc.nextInt();
 
         System.out.println("Parabéns!! Você acaba de locar nosso " + Locadora.getInstance().readCarroSelecionado(session,codigoCarroSelecionado) +

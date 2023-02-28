@@ -3,6 +3,7 @@ package br.com.ada.Entities;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -11,7 +12,6 @@ import java.util.List;
 public class Locadora {
 
     private static final Locadora locadora = new Locadora();
-
     public static Locadora getInstance(){
         return locadora;
     }
@@ -66,9 +66,9 @@ public class Locadora {
 
     }
 
-    public List<Endereco_Unidades> getEnderecoUnidades(Session session){
+    public List<Endereco_Unidades> readEnderecoUnidades(Session session){
         List<Endereco_Unidades> enderecosUnidades = session.createQuery("from Endereco_Unidades").getResultList();
-        return  enderecosUnidades;
+        return enderecosUnidades;
 
     }
 }
