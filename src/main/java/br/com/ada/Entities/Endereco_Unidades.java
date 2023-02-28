@@ -20,7 +20,7 @@ public class Endereco_Unidades {
     private String CEP;
 
     public String toString(){
-        return "Rua/Av " + this.logradouro + ", " + this.cidade + ", " + this.estado + ". " + this.CEP;
+        return id + " -- Rua/Av " + this.logradouro + ", " + this.cidade + ", " + this.estado + ". " + this.CEP;
     }
 
 }

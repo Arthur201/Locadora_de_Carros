@@ -33,7 +33,7 @@ public class MenuAluguel implements IMenuParametrizado<Session, Cliente, List> {
         System.out.println("Selecione a unidade a qual deseja fazer a retirada do carro. Digite seu respectivo ID:  ");
         int IdUnidadeDesejada = sc.nextInt();
 
-        System.out.println("Parabéns!! Você acaba de locar nosso " + Locadora.getInstance().readCarroSelecionado(session,codigoCarroSelecionado) +
+        System.out.println("Parabéns!! Você acaba de locar nosso " + Locadora.getInstance().readCarroSelecionado(session,codigoCarroSelecionado).getMontadora() + " " + Locadora.getInstance().readCarroSelecionado(session,codigoCarroSelecionado).getModelo() +
                 " por " + diarias + " dias, sendo a data de devolução "
                 + LocalDate.now().plusDays(diarias));
 
@@ -58,6 +58,10 @@ public class MenuAluguel implements IMenuParametrizado<Session, Cliente, List> {
         aluguel.setIdEnderecoRetirada((Integer) infoAluguel.get(2));
         aluguel.setIdEnderecoDevolucao((Integer) infoAluguel.get(2));
         aluguel.setAtivo(Status_Aluguel.S);
+
+        session.save(aluguel);
+        session.beginTransaction();
+        session.getTransaction().commit();
 
 
         // update situacaoCarro para "indisponivel";
